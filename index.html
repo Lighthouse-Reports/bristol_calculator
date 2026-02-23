@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Think Family Explainer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <section id="intro">
+        <h1>Inside Bristol’s <span class="accent">Think Family Database</span></h1>
+        <p>The <strong>Think Family Database (TFD)</strong> was created in 2015 by Insight Bristol, a partnership data analytics team between Avon and Somerset Police and Bristol City Council.</p>
+        <p>The Council claims that the TFD’s goal is intended to make prevention and intervention for vulnerable families more targeted and effective. Critics worry that it surveils and profiles already marginalized families.</p>
+        <p>To build this system, the TFD collects vast amounts of data about parents and children -- as well as their relatives -- in Bristol. It pulls together information from roughly 35 distinct datasets. </p>
+        
+        <div class="data-web-container">
+            <div class="nodes-grid">
+                <div class="source-card council-card">
+                    <h4>Bristol City Council</h4>
+                    <div class="sub-tags">
+                        <span>Children Social Care</span>
+                        <span>Early Help</span>
+                        <span>Education</span>
+                        <span>Early Years</span>
+                        <span>Children Centres</span>
+                        <span>Housing</span>
+                        <span>Youth Justice System</span>
+                    </div>
+                </div>
+                <div class="source-card">Avon & Somerset Police</div>
+                <div class="source-card">Department for Education</div>
+                <div class="source-card">Dept for Work & Pensions</div>
+                <div class="source-card small-text">South, Central & West CSU</div>
+                <div class="source-card">Barnardo's</div>
+                <div class="source-card">NHS</div>
+            </div>
+
+            <svg class="funnel-svg" preserveAspectRatio="none" viewBox="0 0 100 100">
+                <path d="M10,0 Q50,60 50,100" stroke="#cbd5e1" stroke-width="1.5" fill="none"/>
+                <path d="M90,0 Q50,60 50,100" stroke="#cbd5e1" stroke-width="1.5" fill="none"/>
+                <path d="M30,0 Q50,60 50,100" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+                <path d="M70,0 Q50,60 50,100" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+                <path d="M50,0 L50,100" stroke="#0284c7" stroke-width="2" fill="none"/>
+            </svg>
+
+            <div class="tfd-core">
+                <h3>Think Family Database</h3>
+            </div>
+        </div>
+
+        <p>Fill out the form below to see some of the data points collected by the Think Family Database.</p>
+    </section>
+
+    <section id="interactive-form">
+        <div class="form-card" id="form-content">
+            </div>
+    </section>
+
+    <template id="question-template">
+        <p class="question-counter"></p>
+        <div class="question-text"></div>
+        <button class="option-btn btn-yes">
+            Yes <span class="btn-arrow">›</span>
+        </button>
+        <button class="option-btn btn-no">
+            No <span class="btn-arrow">›</span>
+        </button>
+    </template>
+
+    <template id="result-template">
+        <div>
+            <h3 class="result-heading">Result</h3>
+            <p class="result-paragraph">
+                The variables you just provided are collected as <strong>Think Family indicators</strong>. 
+                In total, there are over 70 of these indicators, 
+                including whether an adult has has 
+                accessed drug/alcohol support, 
+                has received mental health support,
+                is linked to a victim of domestic violence, or
+                is in rent arrears.
+
+                These indicators are made avaliable to some school staff, social workers and police officers.  
+            </p>
+
+            <p class="result-paragraph">
+                The TFD has used these and other indicators to train predictive AI models.
+                In the past, this has included a model which attempts to predict whether a child will be sexually exploited or join a gang, although these have since been discontinued. 
+            </p>
+
+            <p class="result-paragraph">
+                A model still used by the TFD is one that predicts whether a child will be NEET (not in education, employment, or training) after they turn 16.
+                It assigns a predictive "risk score" to every child in Bristol. Each of the indicators you just provided contributes to this score, which is used to flag children as "at risk" of becoming NEET.
+            </p>
+
+            <p class="result-paragraph">
+                However, this is only a fraction of the picture. The TFD actually collects <strong>numerous other hidden indicators</strong> on you and your extended family, continuously sweeping background databases to update your predictive profile without your direct knowledge.
+            </p>
+        </div>
+
+        <hr class="result-divider">
+
+        <h2 class="risk-title"></h2>
+        <p class="score-text">Your calculated NEET risk score is <strong class="score-display"></strong>.</p>
+        
+        <div class="result-bar">
+            <div class="result-fill" style="width: 0%;"></div> 
+        </div>
+        
+        <div class="results-reality-box">
+            This score is just a hypothetical simulation. While the indicators are real data points collected by the TFD, 
+            The Council refuses to disclose the mathematical scoring system used to calculate the risk score. 
+        </div>
+        
+        <button class="option-btn recalc-btn" onclick="location.reload()">
+            Recalculate Score
+        </button>
+    </template>
+
+<script>
+    // --- APP LOGIC ---
+    const formQuestions = [
+        { q: "Are any children in your household eligible for Free School Meals?", yesScore: 10, noScore: 0 },
+        { q: "Has any adult in your household committed a recorded offence?", yesScore: 20, noScore: 0 },
+        { q: "Is any child in your household classified as persistently absent from school?", yesScore: 15, noScore: 0 },
+        { q: "Has a child in your household had 3 or more periods of school suspension?", yesScore: 15, noScore: 0 },
+        { q: "Is your family currently open to or working with the 'Families in Focus' team?", yesScore: 10, noScore: 0 },
+        { q: "Are you or anyone in your household a teenage parent?", yesScore: 10, noScore: 0 },
+        { q: "Are you or any adult in your household currently receiving out-of-work benefits?", yesScore: 10, noScore: 0 },
+        { q: "Have you or anyone in the household been recorded as a victim of domestic abuse (DVA) within the last 12 months?", yesScore: 15, noScore: 0 },
+        { q: "Has any adult in the household been linked to a non-crime domestic incident within the last 12 months?", yesScore: 10, noScore: 0 },
+        { q: "Are there recorded concerns regarding the mental health of a child in your household?", yesScore: 15, noScore: 0 }
+    ];
+
+    let currentQuestionIndex = 0;
+    let userScore = 0;
+    const maxScore = 130; 
+
+    function renderQuestion() {
+        const container = document.getElementById('form-content');
+        container.style.opacity = 0; 
+        
+        setTimeout(() => {
+            container.innerHTML = ""; 
+            
+            if (currentQuestionIndex >= formQuestions.length) {
+                renderResult(container);
+            } else {
+                const q = formQuestions[currentQuestionIndex];
+                
+                const template = document.getElementById('question-template');
+                const clone = template.content.cloneNode(true);
+                
+                clone.querySelector('.question-counter').textContent = `Data Point ${currentQuestionIndex + 1} of ${formQuestions.length}`;
+                clone.querySelector('.question-text').textContent = q.q;
+                
+                clone.querySelector('.btn-yes').onclick = () => handleAnswer(q.yesScore);
+                clone.querySelector('.btn-no').onclick = () => handleAnswer(q.noScore);
+                
+                container.appendChild(clone);
+            }
+            container.style.opacity = 1; 
+        }, 300); 
+    }
+
+    function handleAnswer(score) {
+        userScore += score;
+        currentQuestionIndex++;
+        renderQuestion();
+    }
+
+    function renderResult(container) {
+        let risk = "Low";
+        let color = "#10b981"; // Modern Emerald
+        
+        if (userScore > 40) { risk = "Elevated"; color = "#f59e0b"; } // Modern Amber
+        if (userScore > 80) { risk = "High"; color = "#ef4444"; } // Modern Red
+
+        const fillPercentage = Math.min((userScore / maxScore) * 100, 100);
+
+        const template = document.getElementById('result-template');
+        const clone = template.content.cloneNode(true);
+        
+        const riskTitle = clone.querySelector('.risk-title');
+        riskTitle.textContent = `${risk} Risk`;
+        riskTitle.style.color = color; // Dynamic risk color
+        
+        clone.querySelector('.score-display').textContent = userScore;
+        clone.querySelector('.result-fill').style.backgroundColor = color; // Dynamic bar color
+        
+        container.appendChild(clone);
+        
+        setTimeout(() => {
+            document.querySelector('.result-fill').style.width = fillPercentage + "%"; // Dynamic bar width
+        }, 100);
+    }
+
+    // Boot up the first question
+    renderQuestion();
+
+</script>
+</body>
+</html>
