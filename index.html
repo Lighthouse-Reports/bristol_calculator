@@ -5,6 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Think Family Explainer</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .provider-text {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #64748b;
+            font-style: italic;
+        }
+        
+        .score-breakdown-container {
+            margin-top: 30px;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .score-breakdown-container h4 {
+            margin-top: 0;
+            color: #334155;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        .recap-chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .recap-chip {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.85em;
+            font-weight: 600;
+            border: 1px solid;
+            display: inline-block;
+        }
+        .chip-yes {
+            background-color: #fef2f2;
+            color: #ef4444;
+            border-color: #fca5a5;
+        }
+        .chip-no {
+            background-color: #ecfdf5;
+            color: #10b981;
+            border-color: #6ee7b7;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+        .breakdown-text {
+            font-size: 0.9em;
+            color: #475569;
+            flex: 1;
+            padding-right: 20px;
+            line-height: 1.4;
+        }
+        .points-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .next-btn {
+            margin-top: 25px;
+            background-color: #3b82f6; 
+            color: white;
+            border-color: #2563eb;
+        }
+        .next-btn:hover {
+            background-color: #2563eb;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,7 +94,7 @@
         <h1>Inside Bristol’s <span class="accent">Think Family Database</span></h1>
         <p>The <strong>Think Family Database (TFD)</strong> was created in 2015 by Insight Bristol, a partnership data analytics team between Avon and Somerset Police and Bristol City Council.</p>
         <p>The Council claims that the TFD’s goal is intended to make prevention and intervention for vulnerable families more targeted and effective. Critics worry that it surveils and profiles already marginalized families.</p>
-        <p>To build this system, the TFD collects vast amounts of data about parents and children -- as well as their relatives -- in Bristol. It pulls together information from roughly 35 distinct datasets. </p>
+        <p>To build this system, the TFD collects vast amounts of data about parents and children -- as well as their relatives -- in Bristol. It pulls together information from roughly 35 distinct datasets and makes them accessible to different professionals. </p>
         
         <div class="data-web-container">
             <div class="nodes-grid">
@@ -54,7 +136,7 @@
 
     <section id="interactive-form">
         <div class="form-card" id="form-content">
-            </div>
+        </div>
     </section>
 
     <template id="question-template">
@@ -66,22 +148,49 @@
         <button class="option-btn btn-no">
             No <span class="btn-arrow">›</span>
         </button>
+        <p class="provider-text"></p>
     </template>
 
-    <template id="result-template">
+    <template id="recap-template">
         <div>
-            <h3 class="result-heading">Result</h3>
+            <h3 class="result-heading">Your Data Profile</h3>
             <p class="result-paragraph">
                 The variables you just provided are collected as <strong>Think Family indicators</strong>. 
-                In total, there are over 70 of these indicators, 
-                including whether an adult has has 
-                accessed drug/alcohol support, 
-                has received mental health support,
-                is linked to a victim of domestic violence, or
-                is in rent arrears.
-
-                These indicators are made avaliable to some school staff, social workers and police officers.  
+                These indicators are made avaliable to some school staff, social workers, and police officers.  
             </p>
+
+            <div class="score-breakdown-container">
+                <h4>Data You Shared</h4>
+                <div id="recap-chips-container" class="recap-chips-container"></div>
+            </div>
+
+            <div class="score-breakdown-container">
+                <h4>Other Hidden Indicators Collected</h4>
+                <div id="hidden-list">
+                    <div class="breakdown-item">
+                        <div class="breakdown-text">Access to drug or alcohol support services</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-text">Housing records and rent arrears</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-text">Police intelligence on extended family members</div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-text">Previous mental health interventions</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="option-btn next-btn" onclick="renderScore()">
+                Calculate Risk Score <span class="btn-arrow">›</span>
+            </button>
+        </div>
+    </template>
+
+    <template id="score-template">
+        <div>
+            <h3 class="result-heading">Predictive AI Models</h3>
 
             <p class="result-paragraph">
                 The TFD has used these and other indicators to train predictive AI models.
@@ -93,48 +202,50 @@
                 It assigns a predictive "risk score" to every child in Bristol. Each of the indicators you just provided contributes to this score, which is used to flag children as "at risk" of becoming NEET.
             </p>
 
-            <p class="result-paragraph">
-                However, this is only a fraction of the picture. The TFD actually collects <strong>numerous other hidden indicators</strong> on you and your extended family, continuously sweeping background databases to update your predictive profile without your direct knowledge.
-            </p>
-        </div>
+            <hr class="result-divider">
 
-        <hr class="result-divider">
+            <h2 class="risk-title"></h2>
+            <p class="score-text">Your calculated NEET risk score is <strong class="score-display"></strong> out of 100.</p>
+            
+            <div class="result-bar">
+                <div class="result-fill" style="width: 0%;"></div> 
+            </div>
 
-        <h2 class="risk-title"></h2>
-        <p class="score-text">Your calculated NEET risk score is <strong class="score-display"></strong>.</p>
-        
-        <div class="result-bar">
-            <div class="result-fill" style="width: 0%;"></div> 
+            <div class="score-breakdown-container">
+                <h4>Risk Score Breakdown</h4>
+                <div id="breakdown-list"></div>
+            </div>
+
+            <div class="results-reality-box">
+                This score is just a hypothetical simulation. While the indicators are real data points collected by the TFD, 
+                The Council refuses to disclose the mathematical scoring system used to calculate the risk score. 
+            </div>
+            
+            <button class="option-btn recalc-btn" onclick="location.reload()">
+                Recalculate Score
+            </button>
         </div>
-        
-        <div class="results-reality-box">
-            This score is just a hypothetical simulation. While the indicators are real data points collected by the TFD, 
-            The Council refuses to disclose the mathematical scoring system used to calculate the risk score. 
-        </div>
-        
-        <button class="option-btn recalc-btn" onclick="location.reload()">
-            Recalculate Score
-        </button>
     </template>
 
 <script>
     // --- APP LOGIC ---
+    // Simple 0-100 logic. "Yes" yields heavy penalties, "No" provides minor risk reduction.
     const formQuestions = [
-        { q: "Are any children in your household eligible for Free School Meals?", yesScore: 10, noScore: 0 },
-        { q: "Has any adult in your household committed a recorded offence?", yesScore: 20, noScore: 0 },
-        { q: "Is any child in your household classified as persistently absent from school?", yesScore: 15, noScore: 0 },
-        { q: "Has a child in your household had 3 or more periods of school suspension?", yesScore: 15, noScore: 0 },
-        { q: "Is your family currently open to or working with the 'Families in Focus' team?", yesScore: 10, noScore: 0 },
-        { q: "Are you or anyone in your household a teenage parent?", yesScore: 10, noScore: 0 },
-        { q: "Are you or any adult in your household currently receiving out-of-work benefits?", yesScore: 10, noScore: 0 },
-        { q: "Have you or anyone in the household been recorded as a victim of domestic abuse (DVA) within the last 12 months?", yesScore: 15, noScore: 0 },
-        { q: "Has any adult in the household been linked to a non-crime domestic incident within the last 12 months?", yesScore: 10, noScore: 0 },
-        { q: "Are there recorded concerns regarding the mental health of a child in your household?", yesScore: 15, noScore: 0 }
+        { q: "Are any children in your household eligible for Free School Meals?", shortLabel: "Free School Meals", yesScore: 15, noScore: -2, provider: "the Dept for Work & Pensions / Department for Education" },
+        { q: "Has any adult in your household committed a recorded offence?", shortLabel: "Recorded Offences", yesScore: 30, noScore: -5, provider: "Avon & Somerset Police" },
+        { q: "Is any child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -3, provider: "the Department for Education" },
+        { q: "Has a child in your household had 3 or more periods of school suspension?", shortLabel: "School Suspensions", yesScore: 20, noScore: -3, provider: "the Department for Education" },
+        { q: "Is your family currently open to or working with the 'Families in Focus' team?", shortLabel: "Families in Focus", yesScore: 10, noScore: -2, provider: "Bristol City Council" },
+        { q: "Are you or anyone in your household a teenage parent?", shortLabel: "Teenage Parent", yesScore: 15, noScore: -2, provider: "the NHS or local health services" },
+        { q: "Are you or any adult in your household currently receiving out-of-work benefits?", shortLabel: "Out-of-work Benefits", yesScore: 15, noScore: -2, provider: "the Dept for Work & Pensions" },
+        { q: "Have you or anyone in the household been recorded as a victim of domestic abuse (DVA) within the last 12 months?", shortLabel: "Victim of Domestic Abuse", yesScore: 25, noScore: -5, provider: "Avon & Somerset Police" },
+        { q: "Has any adult in the household been linked to a non-crime domestic incident within the last 12 months?", shortLabel: "Non-crime Domestic Incidents", yesScore: 10, noScore: 0, provider: "Avon & Somerset Police" },
+        { q: "Are there recorded concerns regarding the mental health of a child in your household?", shortLabel: "Child Mental Health Concerns", yesScore: 20, noScore: -3, provider: "the NHS or social care services" }
     ];
 
     let currentQuestionIndex = 0;
     let userScore = 0;
-    const maxScore = 130; 
+    let userAnswersHistory = [];
 
     function renderQuestion() {
         const container = document.getElementById('form-content');
@@ -144,7 +255,7 @@
             container.innerHTML = ""; 
             
             if (currentQuestionIndex >= formQuestions.length) {
-                renderResult(container);
+                renderRecap(); 
             } else {
                 const q = formQuestions[currentQuestionIndex];
                 
@@ -153,9 +264,10 @@
                 
                 clone.querySelector('.question-counter').textContent = `Data Point ${currentQuestionIndex + 1} of ${formQuestions.length}`;
                 clone.querySelector('.question-text').textContent = q.q;
+                clone.querySelector('.provider-text').textContent = `The Think Family Database contains this data because it was provided by ${q.provider}.`;
                 
-                clone.querySelector('.btn-yes').onclick = () => handleAnswer(q.yesScore);
-                clone.querySelector('.btn-no').onclick = () => handleAnswer(q.noScore);
+                clone.querySelector('.btn-yes').onclick = () => handleAnswer(q, q.yesScore, 'Yes');
+                clone.querySelector('.btn-no').onclick = () => handleAnswer(q, q.noScore, 'No');
                 
                 container.appendChild(clone);
             }
@@ -163,36 +275,114 @@
         }, 300); 
     }
 
-    function handleAnswer(score) {
+    function handleAnswer(questionObj, score, selection) {
+        userAnswersHistory.push({
+            question: questionObj.q,
+            shortLabel: questionObj.shortLabel,
+            pointsAdded: score,
+            provider: questionObj.provider,
+            selection: selection
+        });
         userScore += score;
         currentQuestionIndex++;
         renderQuestion();
     }
 
-    function renderResult(container) {
-        let risk = "Low";
-        let color = "#10b981"; // Modern Emerald
-        
-        if (userScore > 40) { risk = "Elevated"; color = "#f59e0b"; } // Modern Amber
-        if (userScore > 80) { risk = "High"; color = "#ef4444"; } // Modern Red
+    function renderRecap() {
+        const container = document.getElementById('form-content');
+        container.style.opacity = 0;
 
-        const fillPercentage = Math.min((userScore / maxScore) * 100, 100);
-
-        const template = document.getElementById('result-template');
-        const clone = template.content.cloneNode(true);
-        
-        const riskTitle = clone.querySelector('.risk-title');
-        riskTitle.textContent = `${risk} Risk`;
-        riskTitle.style.color = color; // Dynamic risk color
-        
-        clone.querySelector('.score-display').textContent = userScore;
-        clone.querySelector('.result-fill').style.backgroundColor = color; // Dynamic bar color
-        
-        container.appendChild(clone);
-        
         setTimeout(() => {
-            document.querySelector('.result-fill').style.width = fillPercentage + "%"; // Dynamic bar width
-        }, 100);
+            container.innerHTML = ""; 
+            const template = document.getElementById('recap-template');
+            const clone = template.content.cloneNode(true);
+            
+            const recapChipsContainer = clone.querySelector('#recap-chips-container');
+
+            userAnswersHistory.forEach((answer) => {
+                const chip = document.createElement('span');
+                const chipClass = answer.selection === 'Yes' ? 'chip-yes' : 'chip-no';
+                chip.className = `recap-chip ${chipClass}`;
+                chip.textContent = `${answer.selection}: ${answer.shortLabel}`;
+                recapChipsContainer.appendChild(chip);
+            });
+
+            container.appendChild(clone);
+            container.style.opacity = 1;
+        }, 300);
+    }
+
+    function renderScore() {
+        const container = document.getElementById('form-content');
+        container.style.opacity = 0;
+
+        setTimeout(() => {
+            container.innerHTML = ""; 
+            
+            // Hard cap the score between 0 and 100
+            const finalScore = Math.max(0, Math.min(100, userScore));
+
+            let risk = "Low";
+            let mainColor = "#10b981"; // Emerald
+            
+            if (finalScore > 35) { 
+                risk = "Elevated"; 
+                mainColor = "#f59e0b"; // Amber
+            } 
+            if (finalScore >= 70) { 
+                risk = "High"; 
+                mainColor = "#ef4444"; // Red
+            } 
+
+            const template = document.getElementById('score-template');
+            const clone = template.content.cloneNode(true);
+            
+            const riskTitle = clone.querySelector('.risk-title');
+            riskTitle.textContent = `${risk} Risk`;
+            riskTitle.style.color = mainColor; 
+            
+            clone.querySelector('.score-display').textContent = finalScore;
+            clone.querySelector('.result-fill').style.backgroundColor = mainColor; 
+            
+            const breakdownList = clone.querySelector('#breakdown-list');
+
+            userAnswersHistory.forEach((answer) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'breakdown-item';
+                
+                let badgeColor, badgeBgColor, sign;
+                
+                if (answer.pointsAdded > 0) {
+                    badgeColor = "#ef4444"; 
+                    badgeBgColor = "#ef444420";
+                    sign = "+";
+                } else if (answer.pointsAdded < 0) {
+                    badgeColor = "#10b981"; 
+                    badgeBgColor = "#10b98120";
+                    sign = ""; 
+                } else {
+                    badgeColor = "#64748b"; 
+                    badgeBgColor = "#64748b20";
+                    sign = "";
+                }
+
+                itemDiv.innerHTML = `
+                    <div class="breakdown-text">${answer.question}</div>
+                    <div class="points-badge" style="color: ${badgeColor}; background-color: ${badgeBgColor};">
+                        ${sign}${answer.pointsAdded}
+                    </div>
+                `;
+                breakdownList.appendChild(itemDiv);
+            });
+            
+            container.appendChild(clone);
+            container.style.opacity = 1;
+
+            setTimeout(() => {
+                document.querySelector('.result-fill').style.width = finalScore + "%";
+            }, 100);
+
+        }, 300);
     }
 
     // Boot up the first question
