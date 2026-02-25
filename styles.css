@@ -1,15 +1,16 @@
 :root {
-    --primary-accent: #0284c7;   
-    --secondary-accent: #8b5cf6; 
-    --text-dark: #334155;        
-    --text-light: #64748b;       
-    --bg-page: #f9fafb;          
-    --bg-white: #ffffff;         
-    --border-light: #e2e8f0;     
+    /* Bristol Cable inspired palette */
+    --primary-accent: #E33E31;   /* Signature Bristol Cable Red */
+    --secondary-accent: #113C4A; /* Deep editorial teal/navy */
+    --text-dark: #1D1D1B;        /* Rich, ink black */
+    --text-light: #5A5A5A;       /* Readable medium grey */
+    --bg-page: #F7F6F2;          /* Warm newsprint off-white */
+    --bg-white: #FFFFFF;         
+    --border-light: #1D1D1B;     /* Strong, high-contrast borders */
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Clean, bold sans-serif */
     margin: 0;
     background-color: var(--bg-page);
     color: var(--text-dark);
@@ -28,26 +29,27 @@ body {
 }
 
 #intro h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--text-dark);
     margin-bottom: 25px;
-    line-height: 1.2;
-    font-weight: 800;
-    letter-spacing: -0.025em;
+    line-height: 1.1;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
 }
 
 #intro h1 .accent { color: var(--primary-accent); }
 #intro p { margin-bottom: 1.5em; }
-#intro strong { font-weight: 700; color: var(--primary-accent); }
+#intro strong { font-weight: 700; color: var(--text-dark); }
 
 #intro ul {
     margin-bottom: 30px;
     padding-left: 20px;
     background: var(--bg-white);
     padding: 30px 30px 30px 50px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--border-light);
+    border: 2px solid var(--border-light);
+    border-radius: 0; /* Sharp, print-like edges */
+    box-shadow: 6px 6px 0px var(--border-light); /* Brutalist/editorial shadow */
 }
 
 #intro li { margin-bottom: 15px; color: var(--text-dark); }
@@ -56,23 +58,16 @@ body {
 /* --- CREATIVE STATIC DIAGRAM --- */
 .data-web-container {
     background: var(--bg-white);
-    border-radius: 16px;
     padding: 40px 30px;
     margin: 50px 0;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--border-light);
+    border: 2px solid var(--border-light);
+    box-shadow: 8px 8px 0px var(--border-light);
     position: relative;
     overflow: hidden;
 }
 
 .data-web-container::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 50%; width: 60%; height: 60%;
-    transform: translateX(-50%);
-    background: radial-gradient(circle at center, rgba(2, 132, 199, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+    display: none; /* Removing the soft gradient for a flatter, graphic look */
 }
 
 .nodes-grid {
@@ -85,20 +80,18 @@ body {
 
 .source-card {
     background: var(--bg-white);
-    border: 1px solid var(--border-light);
-    border-top: 3px solid var(--primary-accent);
+    border: 2px solid var(--border-light);
+    border-top: 6px solid var(--primary-accent);
     padding: 15px;
-    border-radius: 8px;
     text-align: center;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-dark);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: all 0.15s ease;
 }
 
 .source-card.small-text {
@@ -106,22 +99,22 @@ body {
 }
 
 .source-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
-    border-color: var(--primary-accent);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--border-light);
+    background: var(--bg-page);
 }
 
 .council-card {
     grid-column: 1 / -1; 
-    border-top: 3px solid var(--secondary-accent);
+    border-top: 6px solid var(--secondary-accent);
     padding: 20px;
-    background: #fafafe;
+    background: #F0F4F5;
 }
 
 .council-card h4 {
     margin: 0 0 15px 0;
     color: var(--text-dark);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -129,13 +122,13 @@ body {
 
 .sub-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .sub-tags span {
-    background: #ffffff;
-    border: 1px solid #ddd6fe;
-    color: var(--secondary-accent);
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-dark);
     padding: 6px 14px;
-    border-radius: 20px;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
     white-space: nowrap;
 }
 
@@ -149,22 +142,21 @@ body {
 }
 
 .tfd-core {
-    background: linear-gradient(135deg, var(--primary-accent), #0369a1);
-    border-radius: 12px;
+    background: var(--primary-accent);
+    border: 2px solid var(--border-light);
     padding: 25px 20px;
     text-align: center;
     position: relative;
     z-index: 2;
-    box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2);
 }
 
 .tfd-core h3 {
     margin: 0;
-    color: #ffffff;
-    font-size: 1.4rem;
+    color: var(--bg-white);
+    font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-weight: 800;
+    font-weight: 900;
 }
 
 @media (max-width: 600px) {
@@ -183,28 +175,28 @@ body {
     margin: 0 auto;
     padding: 50px 40px;
     background: var(--bg-white);
-    border-radius: 16px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    border: 2px solid var(--border-light);
+    box-shadow: 8px 8px 0px var(--border-light);
     transition: opacity 0.3s ease;
-    border: 1px solid var(--border-light);
 }
 
 /* Form Template Styles */
 .question-counter {
-    color: var(--text-light);
+    color: var(--primary-accent);
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    display: block;
 }
 
 .question-text {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 800;
     margin-bottom: 35px;
     color: var(--text-dark);
-    line-height: 1.3;
+    line-height: 1.2;
 }
 
 .option-btn {
@@ -217,33 +209,38 @@ body {
     background: var(--bg-white);
     border: 2px solid var(--border-light);
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
-    border-radius: 8px;
+    transition: all 0.15s ease;
     color: var(--text-dark);
     box-sizing: border-box;
 }
 
 .option-btn:hover {
-    border-color: var(--primary-accent);
-    color: var(--primary-accent);
-    transform: translateY(-2px);
-    background: #f0f9ff;
+    background: var(--primary-accent);
+    color: var(--bg-white);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--border-light);
 }
 
 .btn-arrow {
     font-size: 1.2rem;
-    color: var(--border-light);
+    opacity: 0.5;
+}
+
+.option-btn:hover .btn-arrow {
+    color: var(--bg-white);
+    opacity: 1;
 }
 
 /* Result Template Styles */
 .result-heading {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--text-dark);
     margin-top: 0;
     margin-bottom: 20px;
-    font-weight: 800;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 .result-paragraph {
@@ -254,16 +251,17 @@ body {
 
 .result-divider {
     border: 0;
-    border-top: 1px solid var(--border-light);
+    border-top: 2px solid var(--border-light);
     margin: 35px 0;
 }
 
 .risk-title {
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin: 0;
     text-align: center;
     font-weight: 900;
     line-height: 1;
+    color: var(--primary-accent);
 }
 
 .score-text {
@@ -271,16 +269,15 @@ body {
     text-align: center;
     color: var(--text-dark);
     margin-top: 10px;
+    font-weight: 700;
 }
 
 .result-bar {
-    height: 24px;
-    background: #f1f5f9;
+    height: 30px;
+    background: var(--bg-page);
     margin-top: 25px;
     position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    border: 2px solid var(--border-light);
 }
 
 .result-fill {
@@ -288,30 +285,148 @@ body {
     width: 0%;
     background: var(--primary-accent); 
     transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-    border-radius: 12px;
+    border-right: 2px solid var(--border-light);
 }
 
 .results-reality-box {
     margin-top: 40px;
     text-align: left;
     padding: 25px;
-    background: var(--bg-page);
-    border-left: 4px solid var(--primary-accent);
+    background: #F0F4F5;
+    border-top: 6px solid var(--secondary-accent);
+    border-bottom: 2px solid var(--border-light);
+    border-left: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-light);
     color: var(--text-dark);
-    border-radius: 0 8px 8px 0;
 }
+
+/* --- BUTTONS & NEW COMPONENTS --- */
 
 .recalc-btn {
     margin-top: 30px; 
     justify-content: center; 
-    background: var(--bg-page); 
-    color: var(--text-light);
-    border: 1px solid var(--border-light);
+    background: var(--text-dark); 
+    color: var(--bg-white);
+    border: 2px solid var(--border-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px 25px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.15s ease;
 }
 
 .recalc-btn:hover {
-     background: var(--bg-white);
-     color: var(--text-dark);
-     border-color: var(--text-dark);
-     transform: none;
+     background: var(--primary-accent);
+     color: var(--bg-white);
+     transform: translate(-2px, -2px);
+     box-shadow: 4px 4px 0px var(--border-light);
+}
+
+.provider-text {
+    margin-top: 20px;
+    font-size: 0.85em;
+    color: var(--text-light);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    /* Removed italics for a harder print feel */
+}
+
+.score-breakdown-container {
+    margin-top: 30px;
+    background: var(--bg-white);
+    padding: 25px;
+    border: 2px solid var(--border-light);
+    box-shadow: 6px 6px 0px var(--border-light); /* Added brutalist shadow */
+}
+
+.score-breakdown-container h4 {
+    margin-top: 0;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border-light); /* Hard border line */
+    padding-bottom: 10px;
+}
+
+.recap-chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.recap-chip {
+    padding: 6px 14px;
+    font-size: 0.85em;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: 2px solid var(--border-light);
+    display: inline-block;
+    /* Rounded corners removed for sharp aesthetic */
+}
+
+.chip-yes {
+    background-color: var(--primary-accent);
+    color: var(--bg-white);
+}
+
+.chip-no {
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 2px solid var(--border-light); /* Harder separator */
+}
+
+.breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.breakdown-text {
+    font-size: 1em;
+    color: var(--text-dark);
+    font-weight: 600;
+    flex: 1;
+    padding-right: 20px;
+    line-height: 1.4;
+}
+
+.points-badge {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    font-weight: 900;
+    white-space: nowrap;
+    background: var(--text-dark);
+    color: var(--bg-white);
+    border: 2px solid var(--border-light);
+}
+
+.next-btn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: var(--secondary-accent); /* Using the editorial navy here */
+    color: var(--bg-white);
+    border: 2px solid var(--border-light);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.next-btn:hover {
+    background-color: var(--primary-accent);
+    color: var(--bg-white);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--border-light);
 }

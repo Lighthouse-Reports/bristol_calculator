@@ -5,88 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Think Family Explainer</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .provider-text {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #64748b;
-            font-style: italic;
-        }
-        
-        .score-breakdown-container {
-            margin-top: 30px;
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-        }
-        .score-breakdown-container h4 {
-            margin-top: 0;
-            color: #334155;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-        }
-        
-        .recap-chips-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .recap-chip {
-            padding: 6px 12px;
-            border-radius: 16px;
-            font-size: 0.85em;
-            font-weight: 600;
-            border: 1px solid;
-            display: inline-block;
-        }
-        .chip-yes {
-            background-color: #fef2f2;
-            color: #ef4444;
-            border-color: #fca5a5;
-        }
-        .chip-no {
-            background-color: #ecfdf5;
-            color: #10b981;
-            border-color: #6ee7b7;
-        }
-
-        .breakdown-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .breakdown-item:last-child {
-            border-bottom: none;
-        }
-        .breakdown-text {
-            font-size: 0.9em;
-            color: #475569;
-            flex: 1;
-            padding-right: 20px;
-            line-height: 1.4;
-        }
-        .points-badge {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-        .next-btn {
-            margin-top: 25px;
-            background-color: #3b82f6; 
-            color: white;
-            border-color: #2563eb;
-        }
-        .next-btn:hover {
-            background-color: #2563eb;
-        }
-    </style>
 </head>
 <body>
 
@@ -231,16 +149,16 @@
     // --- APP LOGIC ---
     // Simple 0-100 logic. "Yes" yields heavy penalties, "No" provides minor risk reduction.
     const formQuestions = [
-        { q: "Are any children in your household eligible for Free School Meals?", shortLabel: "Free School Meals", yesScore: 15, noScore: -2, provider: "the Dept for Work & Pensions / Department for Education" },
-        { q: "Has any adult in your household committed a recorded offence?", shortLabel: "Recorded Offences", yesScore: 30, noScore: -5, provider: "Avon & Somerset Police" },
-        { q: "Is any child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -3, provider: "the Department for Education" },
-        { q: "Has a child in your household had 3 or more periods of school suspension?", shortLabel: "School Suspensions", yesScore: 20, noScore: -3, provider: "the Department for Education" },
-        { q: "Is your family currently open to or working with the 'Families in Focus' team?", shortLabel: "Families in Focus", yesScore: 10, noScore: -2, provider: "Bristol City Council" },
+        { q: "Are any children in your household eligible for Free School Meals?", shortLabel: "Free School Meals", yesScore: 15, noScore: -7, provider: "the Dept for Work & Pensions / Department for Education" },
+        { q: "Has any adult in your household committed a recorded offence?", shortLabel: "Recorded Offences", yesScore: 18, noScore: -10, provider: "Avon & Somerset Police" },
+        { q: "Is any child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -7, provider: "the Department for Education" },
+        { q: "Has a child in your household had 3 or more periods of school suspension?", shortLabel: "School Suspensions", yesScore: 20, noScore: -9, provider: "the Department for Education" },
+        { q: "Is your family currently open to or working with the 'Families in Focus' team?", shortLabel: "Families in Focus", yesScore: 5, noScore: -2, provider: "Bristol City Council" },
         { q: "Are you or anyone in your household a teenage parent?", shortLabel: "Teenage Parent", yesScore: 15, noScore: -2, provider: "the NHS or local health services" },
-        { q: "Are you or any adult in your household currently receiving out-of-work benefits?", shortLabel: "Out-of-work Benefits", yesScore: 15, noScore: -2, provider: "the Dept for Work & Pensions" },
-        { q: "Have you or anyone in the household been recorded as a victim of domestic abuse (DVA) within the last 12 months?", shortLabel: "Victim of Domestic Abuse", yesScore: 25, noScore: -5, provider: "Avon & Somerset Police" },
-        { q: "Has any adult in the household been linked to a non-crime domestic incident within the last 12 months?", shortLabel: "Non-crime Domestic Incidents", yesScore: 10, noScore: 0, provider: "Avon & Somerset Police" },
-        { q: "Are there recorded concerns regarding the mental health of a child in your household?", shortLabel: "Child Mental Health Concerns", yesScore: 20, noScore: -3, provider: "the NHS or social care services" }
+        { q: "Are you or any adult in your household currently receiving out-of-work benefits?", shortLabel: "Out-of-work Benefits", yesScore: 10, noScore: -10, provider: "the Dept for Work & Pensions" },
+        { q: "Have you or anyone in the household been recorded as a victim of domestic abuse (DVA) within the last 12 months?", shortLabel: "Victim of Domestic Abuse", yesScore: 18, noScore: -5, provider: "Avon & Somerset Police" },
+        { q: "Has any adult in the household been linked to a non-crime domestic incident within the last 12 months?", shortLabel: "Non-crime Domestic Incidents", yesScore: 10, noScore: -10, provider: "Avon & Somerset Police" },
+        { q: "Are there recorded concerns regarding the mental health of a child in your household?", shortLabel: "Child Mental Health Concerns", yesScore: 20, noScore: -8, provider: "the NHS or social care services" }
     ];
 
     let currentQuestionIndex = 0;
