@@ -171,6 +171,15 @@
                 It assigns a predictive "risk score" to every child in Bristol. Each of the indicators you just provided contributes to this score, which is used to flag children as "at risk" of becoming NEET.
             </p>
 
+            <p class="result-paragraph">
+                We do not currently understand how the risk score is used, but we do know it is made available on the Think Family Education app used by some school staff.
+            </p>
+
+            <div class="results-reality-box">
+                This score is just a hypothetical simulation. While the indicators are real data points collected by the TFD, 
+                The Council refuses to disclose the mathematical scoring system used to calculate the risk score.  
+            </div>
+
             <hr class="result-divider">
 
             <h2 class="risk-title"></h2>
@@ -183,11 +192,6 @@
             <div class="score-breakdown-container">
                 <h4>Risk Score Breakdown</h4>
                 <div id="breakdown-list"></div>
-            </div>
-
-            <div class="results-reality-box">
-                This score is just a hypothetical simulation. While the indicators are real data points collected by the TFD, 
-                The Council refuses to disclose the mathematical scoring system used to calculate the risk score. 
             </div>
             
             <button class="option-btn recalc-btn" onclick="location.reload()">
@@ -202,7 +206,7 @@
         { q: "Has any adult in your household committed a recorded offence?", shortLabel: "Recorded Offences", yesScore: 18, noScore: -10, provider: "Avon & Somerset Police" },
         { q: "Is any child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -7, provider: "your child's school" },
         { q: "Has a child in your household had 3 or more periods of school suspension?", shortLabel: "School Suspensions", yesScore: 25, noScore: -9, provider: "your child's school" },
-        { q: "Is your family currently open to or working with the 'Families in Focus' team?", shortLabel: "Families in Focus", yesScore: 5, noScore: -2, provider: "Bristol City Council" },
+        { q: "Is your family currently working with the 'Families in Focus' team?", shortLabel: "Families in Focus", yesScore: 5, noScore: -2, provider: "Bristol City Council" },
         { q: "Are you or anyone in your household a teenage parent?", shortLabel: "Teenage Parent", yesScore: 15, noScore: -2, provider: "the NHS" },
         { q: "Are you or any adult in your household currently receiving out-of-work benefits?", shortLabel: "Out-of-work Benefits", yesScore: 15, noScore: -10, provider: "the Dept for Work & Pensions" },
         { q: "Have you or anyone in the household been recorded as a victim of domestic abuse (DVA) within the last 12 months?", shortLabel: "Victim of Domestic Abuse", yesScore: 18, noScore: -5, provider: "Avon & Somerset Police" },
