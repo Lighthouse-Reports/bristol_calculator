@@ -203,15 +203,15 @@
 <script>
     const formQuestions = [
         { q: "Are any children in your household eligible for Free School Meals?", shortLabel: "Free School Meals", yesScore: 19, noScore: -7, provider: "the Department for Education" },
-        { q: "Has any adult in your household committed a recorded offence?", shortLabel: "Recorded Offences", yesScore: 18, noScore: -10, provider: "Avon & Somerset Police" },
-        { q: "Is any child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -7, provider: "your child's school" },
         { q: "Has a child in your household had 3 or more periods of school suspension?", shortLabel: "School Suspensions", yesScore: 25, noScore: -9, provider: "your child's school" },
+        { q: "Is any child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -7, provider: "your child's school" },
+        { q: "Are there recorded concerns regarding the mental health of a child in your household?", shortLabel: "Child Mental Health Concerns", yesScore: 20, noScore: -8, provider: "the NHS or social care services" },
+        { q: "Has any adult in your household committed a recorded offence?", shortLabel: "Recorded Offences", yesScore: 18, noScore: -10, provider: "Avon & Somerset Police" },
         { q: "Is your family currently working with the 'Families in Focus' team?", shortLabel: "Families in Focus", yesScore: 5, noScore: -2, provider: "Bristol City Council" },
         { q: "Are you or anyone in your household a teenage parent?", shortLabel: "Teenage Parent", yesScore: 15, noScore: -2, provider: "the NHS" },
         { q: "Are you or any adult in your household currently receiving out-of-work benefits?", shortLabel: "Out-of-work Benefits", yesScore: 15, noScore: -10, provider: "the Dept for Work & Pensions" },
         { q: "Have you or anyone in the household been recorded as a victim of domestic abuse (DVA) within the last 12 months?", shortLabel: "Victim of Domestic Abuse", yesScore: 18, noScore: -5, provider: "Avon & Somerset Police" },
         { q: "Has any adult in the household been linked to a non-crime domestic incident within the last 12 months?", shortLabel: "Non-crime Domestic Incidents", yesScore: 15, noScore: -10, provider: "Avon & Somerset Police" },
-        { q: "Are there recorded concerns regarding the mental health of a child in your household?", shortLabel: "Child Mental Health Concerns", yesScore: 20, noScore: -8, provider: "the NHS or social care services" }
     ];
 
     let currentQuestionIndex = 0;
