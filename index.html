@@ -119,7 +119,7 @@
             <h3 class="result-heading">Your Data Profile</h3>
             <p class="result-paragraph">
                 The variables you just provided are collected as <strong>Think Family indicators</strong>. 
-                These indicators are made avaliable to some school staff, social workers, and police officers.  
+                These indicators are made available to some school staff, social workers, and police officers.  
             </p>
 
             <div class="score-breakdown-container">
@@ -132,7 +132,7 @@
 
                 <p>
                     In addition to the indicators you provided, the Think Family Database collects more than  
-                    <strong>60 additional indicators</strong>that include:
+                    <strong>60 additional indicators</strong> that include:
                 </p>
 
                 <div id="hidden-list">
@@ -176,8 +176,7 @@
             </p>
 
             <div class="results-reality-box">
-                This score is just a hypothetical simulation. While the indicators are real data points collected by the TFD, 
-                The Council refuses to disclose the mathematical scoring system used to calculate the risk score.  
+                This score is just a hypothetical simulation. While the indicators are really used in the NEET score and shown in the TFD, the council refuses to disclose how they calculate the risk score, such as how important each indicator is.
             </div>
 
             <hr class="result-divider">
@@ -188,6 +187,10 @@
             <div class="result-bar">
                 <div class="result-fill" style="width: 0%;"></div> 
             </div>
+
+            <p>
+                <strong>What does it mean for your child?</strong> We don't know, as it's unclear how this score is used by school staff and other professionals who have access to it. This is why transparency about the TFD, the risk scores, and their consequences is essential.
+            </p>
 
             <div class="score-breakdown-container">
                 <h4>Risk Score Breakdown</h4>
@@ -202,9 +205,9 @@
 
 <script>
     const formQuestions = [
-        { q: "Are any children in your household eligible for Free School Meals?", shortLabel: "Free School Meals", yesScore: 19, noScore: -7, provider: "the Department for Education" },
+        { q: "Is your child eligible for Free School Meals?", shortLabel: "Free School Meals", yesScore: 19, noScore: -7, provider: "the Department for Education" },
+        { q: "Is your child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -7, provider: "your child's school" },
         { q: "Has a child in your household had 3 or more periods of school suspension?", shortLabel: "School Suspensions", yesScore: 25, noScore: -9, provider: "your child's school" },
-        { q: "Is any child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -7, provider: "your child's school" },
         { q: "Are there recorded concerns regarding the mental health of a child in your household?", shortLabel: "Child Mental Health Concerns", yesScore: 20, noScore: -8, provider: "the NHS or social care services" },
         { q: "Has any adult in your household committed a recorded offence?", shortLabel: "Recorded Offences", yesScore: 18, noScore: -10, provider: "Avon & Somerset Police" },
         { q: "Is your family currently working with the 'Families in Focus' team?", shortLabel: "Families in Focus", yesScore: 5, noScore: -2, provider: "Bristol City Council" },
