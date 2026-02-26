@@ -45,7 +45,7 @@
         </p>
 
         <div class="privacy-box">
-             <strong>PRIVACY NOTE:</strong> The use of this calculator is <strong>completely anonymous</strong> and no data is being collected about you. All responses are processed locally in your browser and are not transmitted or stored anywhere. This tool does not collect IP addresses, personal information, or any other data. 
+             <strong>PRIVACY NOTE:</strong> The use of this calculator is <strong>completely anonymous</strong> and no data is being collected about you. All responses are processed locally in your browser and are not transmitted or stored anywhere. This tool does not collect IP addresses, cookies, or any other data. 
         </div>
         
         <div class="data-web-container">
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <p>Fill out the form below to see some of the data points collected by the Think Family Database.</p>
+        <h2 class="explainer-subtitle">Fill out the form below to see some of the data points collected by the Think Family Database.</h2>
     </section>
 
     <section id="interactive-form">
@@ -117,7 +117,13 @@
             </div>
 
             <div class="score-breakdown-container">
-                <h4>Other Hidden Indicators Collected</h4>
+                <h4>Other Indicators Collected</h4>
+
+                <p>
+                    In addition to the indicators you provided, the Think Family Database collects more than  
+                    <strong>60 additional indicators</strong>that include:
+                </p>
+
                 <div id="hidden-list">
                     <div class="breakdown-item">
                         <div class="breakdown-text">Access to drug or alcohol support services</div>
@@ -181,12 +187,12 @@
 
 <script>
     const formQuestions = [
-        { q: "Are any children in your household eligible for Free School Meals?", shortLabel: "Free School Meals", yesScore: 19, noScore: -7, provider: "the Dept for Work & Pensions / Department for Education" },
+        { q: "Are any children in your household eligible for Free School Meals?", shortLabel: "Free School Meals", yesScore: 19, noScore: -7, provider: "the Department for Education" },
         { q: "Has any adult in your household committed a recorded offence?", shortLabel: "Recorded Offences", yesScore: 18, noScore: -10, provider: "Avon & Somerset Police" },
-        { q: "Is any child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -7, provider: "the Department for Education" },
-        { q: "Has a child in your household had 3 or more periods of school suspension?", shortLabel: "School Suspensions", yesScore: 25, noScore: -9, provider: "the Department for Education" },
+        { q: "Is any child in your household classified as persistently absent from school?", shortLabel: "School Absence", yesScore: 20, noScore: -7, provider: "your child's school" },
+        { q: "Has a child in your household had 3 or more periods of school suspension?", shortLabel: "School Suspensions", yesScore: 25, noScore: -9, provider: "your child's school" },
         { q: "Is your family currently open to or working with the 'Families in Focus' team?", shortLabel: "Families in Focus", yesScore: 5, noScore: -2, provider: "Bristol City Council" },
-        { q: "Are you or anyone in your household a teenage parent?", shortLabel: "Teenage Parent", yesScore: 15, noScore: -2, provider: "the NHS or local health services" },
+        { q: "Are you or anyone in your household a teenage parent?", shortLabel: "Teenage Parent", yesScore: 15, noScore: -2, provider: "the NHS" },
         { q: "Are you or any adult in your household currently receiving out-of-work benefits?", shortLabel: "Out-of-work Benefits", yesScore: 15, noScore: -10, provider: "the Dept for Work & Pensions" },
         { q: "Have you or anyone in the household been recorded as a victim of domestic abuse (DVA) within the last 12 months?", shortLabel: "Victim of Domestic Abuse", yesScore: 18, noScore: -5, provider: "Avon & Somerset Police" },
         { q: "Has any adult in the household been linked to a non-crime domestic incident within the last 12 months?", shortLabel: "Non-crime Domestic Incidents", yesScore: 15, noScore: -10, provider: "Avon & Somerset Police" },

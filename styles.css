@@ -98,11 +98,11 @@ body {
     font-size: 0.75rem;
 }
 
-.source-card:hover {
+/* .source-card:hover {
     transform: translate(-2px, -2px);
     box-shadow: 4px 4px 0px var(--border-light);
     background: var(--bg-page);
-}
+} */
 
 .council-card {
     grid-column: 1 / -1; 
