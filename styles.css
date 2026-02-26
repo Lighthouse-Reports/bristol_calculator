@@ -447,3 +447,14 @@ body {
     color: var(--primary-accent); /* Signature Red for emphasis */
     letter-spacing: 0.5px;
 }
+
+.explainer-subtitle {
+            font-size: 1.35rem;
+            color: #113C4A; /* Deep editorial teal/navy */
+            font-weight: normal;
+            margin-top: -5px; /* Pulls it closer to the main heading */
+            margin-bottom: 30px;
+            line-height: 1.4;
+            border-left: 5px solid #E33E31; /* Signature Bristol Cable Red */
+            padding-left: 18px;
+}
